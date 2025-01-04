@@ -107,9 +107,11 @@ Current section extra: {% if current_section %}{{ current_section.extra | json_e
 
 <main>
     <article>
-        <h1 class="article-title">
-            {{ page.title }}
-        </h1>
+        {% if page.title %}
+            <h1 class="article-title">
+                {{ page.title }}
+            </h1>
+        {% endif %}
 
         <ul class="meta">
             {#- Draft indicator -#}

@@ -57,6 +57,11 @@
         {%- set stylesheets = stylesheets | concat(with=page.extra.stylesheets) -%}
     {%- endif -%}
 
+    {# Load extra CSS files from section metadata #}
+    {%- if section.extra.stylesheets -%}
+        {%- set stylesheets = stylesheets | concat(with=section.extra.stylesheets) -%}
+    {%- endif -%}
+
     {# Load extra CSS for custom skin #}
     {%- if config.extra.skin -%}
         {%- set stylesheets = stylesheets | concat(with='skins/' ~ config.extra.skin ~ '.css') -%}
