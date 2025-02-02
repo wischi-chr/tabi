@@ -15,6 +15,16 @@
     {%- endif -%}
 {%- endif -%}
 
+{#- Allows custom width and height, if they are not set we use meta -#}
+{%- if (width is undefined) and (height is undefined) -%}
+    {%- if meta.width -%}
+        {%- set width = meta.width -%}
+    {%- endif -%}
+    {%- if meta.height -%}
+        {%- set height = meta.height -%}
+    {%- endif -%}
+{%- endif -%}
+
 {%- set lazy_loading = lazy_loading | default(value=true) -%}
 {%- set inline = inline | default(value=false) -%}
 
@@ -26,7 +36,7 @@
 {%- if full_width -%}
     <div class="full-width">
 {%- endif -%}
-<img class="{{ class_list }}" src="{{ image_url }}"{% if lazy_loading %} loading="lazy"{% endif %}{% if alt %} alt="{{ alt }}"{% endif %}{% if meta.width %} width="{{ meta.width }}"{% endif %}{% if meta.height %} height="{{ meta.height }}" {% endif %}/>
+<img class="{{ class_list }}" src="{{ image_url }}"{% if lazy_loading %} loading="lazy"{% endif %}{% if alt %} alt="{{ alt }}"{% endif %}{% if width %} width="{{ width }}"{% endif %}{% if height %} height="{{ height }}" {% endif %}/>
 {%- if full_width -%}
     </div>
 {%- endif -%}
